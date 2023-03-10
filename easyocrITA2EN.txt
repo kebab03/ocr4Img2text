@@ -1,0 +1,17 @@
+!pip install easyocr --no-deps # Colab already has all dependencies
+!pip install python-bidi
+
+# show an image
+import PIL
+from PIL import ImageDraw
+im = PIL.Image.open("ta_poster.jpg")
+im
+
+# Create a reader to do OCR.
+# If you change to GPU instance, it will be faster. But CPU is enough.
+# (by MENU > Runtime > Change runtime type > GPU, then redo from beginning )
+import easyocr
+reader = easyocr.Reader(['it','en'])
+bounds = reader.readtext('ta_poster.jpg')
+print(bounds)
+
